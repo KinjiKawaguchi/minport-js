@@ -1,6 +1,6 @@
 {
   "name": "minport",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "A JavaScript/TypeScript linter that finds unnecessarily long import paths and suggests shorter alternatives",
   "type": "module",
   "bin": {
