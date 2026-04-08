@@ -1,0 +1,61 @@
+{
+  "name": "minport",
+  "version": "0.0.0",
+  "description": "A JavaScript/TypeScript linter that finds unnecessarily long import paths and suggests shorter alternatives",
+  "type": "module",
+  "bin": {
+    "minport": "./dist/cli.js"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "packageManager": "pnpm@10.8.1",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "build": "tsc",
+    "check": "biome check src/ tests/",
+    "check:fix": "biome check src/ tests/ --fix",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:coverage": "vitest run --coverage"
+  },
+  "license": "MIT",
+  "author": "KinjiKawaguchi",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/KinjiKawaguchi/minport-js"
+  },
+  "bugs": {
+    "url": "https://github.com/KinjiKawaguchi/minport-js/issues"
+  },
+  "homepage": "https://github.com/KinjiKawaguchi/minport-js",
+  "keywords": [
+    "linter",
+    "static-analysis",
+    "import",
+    "refactoring",
+    "code-quality",
+    "typescript",
+    "javascript"
+  ],
+  "dependencies": {
+    "oxc-parser": "^0.72.0"
+  },
+  "devDependencies": {
+    "@types/node": "^24.0.0",
+    "@biomejs/biome": "^2.0.0",
+    "@vitest/coverage-v8": "^3.0.0",
+    "lefthook": "^1.11.0",
+    "typescript": "^5.8.0",
+    "vitest": "^3.0.0"
+  }
+}
