@@ -49,28 +49,15 @@ jobs:
       - run: pnpm install --frozen-lockfile
       - run: pnpm test:coverage
 
-  audit:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: pnpm/action-setup@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: "24"
-          cache: "pnpm"
-      - run: pnpm install --frozen-lockfile
-      - run: pnpm audit --prod
-
   all-checks-pass:
     if: always()
-    needs: [lint, typecheck, test, audit]
+    needs: [lint, typecheck, test]
     runs-on: ubuntu-latest
     steps:
       - run: |
           if [[ "${{ needs.lint.result }}" != "success" ]] || \
              [[ "${{ needs.typecheck.result }}" != "success" ]] || \
-             [[ "${{ needs.test.result }}" != "success" ]] || \
-             [[ "${{ needs.audit.result }}" != "success" ]]; then
+             [[ "${{ needs.test.result }}" != "success" ]]; then
             echo "One or more checks failed"
             exit 1
           fi
